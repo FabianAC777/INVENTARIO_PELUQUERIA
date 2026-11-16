@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Control de inventario para insumos de peluquería">
+    <title>Inventario de peluquería</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <p class="eyebrow">Gestión de insumos</p>
+        <h1>Control de inventario</h1>
+        <p>Administra insumos y revisa el stock crítico del salón.</p>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="panel" aria-labelledby="registro-title">
+        <h2 id="registro-title">Registrar nuevo insumo</h2>
+        <form id="form-insumo">
+          <label for="nombre">Nombre del insumo</label>
+          <input id="nombre" name="nombre" type="text" maxlength="120" required>
+
+          <label for="marca">Marca</label>
+          <input id="marca" name="marca" type="text" maxlength="80" required>
+
+          <label for="stock">Stock inicial</label>
+          <input id="stock" name="stock_actual" type="number" min="0" step="1" value="0" required>
+
+          <label for="minimo">Stock crítico mínimo</label>
+          <input id="minimo" name="stock_minimo" type="number" min="0" step="1" value="3" required>
+
+          <label for="categoria">Categoría</label>
+          <select id="categoria" name="id_categoria">
+            <option value="">Sin categoría</option>
+          </select>
+
+          <button class="btn-primary" type="submit">Guardar insumo</button>
+        </form>
+        <p id="form-mensaje" class="message" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="panel" aria-labelledby="inventario-title">
+        <div class="section-heading">
+          <h2 id="inventario-title">Stock actual en el salón</h2>
+          <button id="refresh-button" class="btn-secondary" type="button">Actualizar</button>
+        </div>
+        <p id="lista-mensaje" class="message" role="status" aria-live="polite">Cargando inventario…</p>
+        <div id="lista-insumos" class="inventory-list" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <footer class="container">
+      <p>Control de inventario para peluquería</p>
+    </footer>
+  </body>
+</html>
